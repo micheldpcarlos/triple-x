@@ -1,0 +1,1 @@
+cl /EHsc tripleX.cpp && cls && tripleX.exe

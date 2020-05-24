@@ -4,6 +4,8 @@
 #include <string>
 #include <Windows.h>
 
+const std::string MarginFix = "    ";
+
 bool IsPlayerGuessCompatible(std::string PlayerGuess)
 {
 
@@ -35,9 +37,9 @@ void PrintIntroduction()
                  |_______________|       
 )" << '\n';
 
-    std::cout << "Oh shit, you're locked in a weird looking room! \n";
-    std::cout << "Looks like you can escape using a passcode! \n\n";
-    std::cout << "Press any key to continue...";
+    std::cout << MarginFix << "Oh shit, you're locked in a weird looking room! \n";
+    std::cout << MarginFix << "Looks like you can escape using a passcode! \n\n";
+    std::cout << MarginFix << "Press any key to continue...";
     getch();
 }
 
@@ -53,13 +55,13 @@ bool PlayGame(int Dificulty)
     const int CodeProduct = CodeA * CodeB * CodeC;
 
     system("cls");
-    std::cout << "YOU'RE IN THE ROOM LEVEL " << Dificulty << "\n";
-    std::cout << "------------------------------------";
-    std::cout << "\n  + There are 3 numbers in the code";
-    std::cout << "\n  + The code add-up to: " << CodeSum;
-    std::cout << "\n  + The code multiply to give: " << CodeProduct;
-    std::cout << "\n \n Enter the code to escape \n";
-    std::cout << "------------------------------------";
+    std::cout << MarginFix << "YOU'RE IN THE ROOM LEVEL " << Dificulty << "\n";
+    std::cout << MarginFix << "------------------------------------\n";
+    std::cout << MarginFix << "  + There are 3 numbers in the code\n";
+    std::cout << MarginFix << "  + The code add-up to: " << CodeSum << "\n";
+    std::cout << MarginFix << "  + The code multiply to give: " << CodeProduct << "\n\n";
+    std::cout << MarginFix << "Enter the code to escape \n";
+    std::cout << MarginFix << "------------------------------------";
 
     std::cout << std::endl;
 
@@ -68,9 +70,10 @@ bool PlayGame(int Dificulty)
 
     while (IsPlayerGuessCompatible(PlayerGuess) == false)
     {
-        std::cout << " \n\nOpss... you entered an incompatible answer! \n";
-        std::cout << "Only 3 numbers to break the code! \n";
-        std::cout << "Lets try again: \n\n";
+        std::cout << "\n\n";
+        std::cout << MarginFix << "Opss... you entered an incompatible answer! \n";
+        std::cout << MarginFix << "Only 3 numbers to break the code! \n";
+        std::cout << MarginFix << "Lets try again: \n\n";
 
         std::cin >> PlayerGuess;
     }
@@ -107,13 +110,13 @@ int main()
             if (LevelDificulty > MaxDificulty)
             {
                 system("cls");
-                std::cout << "CONGRATULATIONS! YOU'RE FREE NOW! RUN! \n\n";
-                std::cout << "Press any key to exit...";
+                std::cout << MarginFix << "CONGRATULATIONS! YOU'RE FREE NOW! RUN! \n\n";
+                std::cout << MarginFix << "Press any key to exit...";
                 getch();
             }
 
             system("cls");
-            std::cout << "Door opened! Going to the next room";
+            std::cout << MarginFix << "Door opened! Going to the next room";
             Sleep(1000);
             std::cout << ".";
             Sleep(1000);
@@ -128,19 +131,24 @@ int main()
             if (PlayerAttempt <= MaxAttempt)
             {
                 system("cls");
-                std::cout << "OH NO! YOU ENTERED A WRONG PASSCODE \n";
-                std::cout << "LETS REBOOT THE SYSTEM AND TRY AGAIN \n\n";
-                std::cout << MaxAttempt - PlayerAttempt << " Attempts remainig\n\n";
-                std::cout << "Press any key to restart the level...";
+                std::cout << MarginFix << "OH NO! YOU ENTERED A WRONG PASSCODE \n";
+                std::cout << MarginFix << "LETS REBOOT THE SYSTEM AND TRY AGAIN \n\n";
+                std::cout << MarginFix << MaxAttempt - PlayerAttempt << " Attempts remainig\n\n";
+                std::cout << MarginFix << "Press any key to restart the level...";
                 getch();
             }
             else
             {
                 system("cls");
-                std::cout << "!!!!!! ALARM STARTED !!!!!!\n\n";
-                std::cout << "THERE ARE GUARDS ALL OVER THE PLACE \n\n";
-                std::cout << "YOU'RE DEAD NOW!\n\n\n";
-                std::cout << "Press any key to exit...";
+                std::cout << MarginFix << "!!!!!! ALARM STARTED !!!!!!\n\n";
+                std::cout << MarginFix << "THERE ARE GUARDS ALL OVER THE PLACE \n\n";
+                std::cout << R"( 
+      O
+     <\==-   -   - -   -  -  - ---
+    ./ \                            _/\_\O )";
+                std::cout << "\n"
+                          << MarginFix << "YOU'RE DEAD NOW!\n\n\n";
+                std::cout << MarginFix << "Press any key to exit...";
                 getch();
             }
         }
